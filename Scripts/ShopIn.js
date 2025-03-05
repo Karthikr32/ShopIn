@@ -87,7 +87,7 @@ window.addEventListener("load", () => {
 // Main function to execute the Items!!!
 function displayItems(id) {
   // Fetching the json file through fetch..works bettr thn AJAX!
-  fetch("/Data/myProducts.json")
+  fetch("/ShopIn/Data/myProducts.json")
     .then((response) => response.json())
     .then((myObjects) => {
       // Filtering the user clicked filter-id's products in our json file
@@ -141,7 +141,7 @@ document.getElementById("form").addEventListener("input", (e) => {
     return;             // an immediate return when input is 'empty'.
   }
 
-  fetch("/Data/myProducts.json")
+  fetch("/ShopIn/Data/myProducts.json")
     .then((response) => response.json())
     .then((myObjects) => {
       
@@ -184,7 +184,7 @@ document.getElementById("form").addEventListener("input", (e) => {
 function displayComItems(id1, id2) {
   const block = document.querySelector("#main-block");
 
-  fetch("/Data/myProducts.json")
+  fetch("/ShopIn/Data/myProducts.json")
     .then((response) => response.json())
     .then((myObjects) => {
       // filtering the product items by
