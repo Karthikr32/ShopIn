@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop.in</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="./Styles/style.css">
+  <link rel="stylesheet" href="./Styles/style2.css">
+  <link rel="shortcut icon" href="./Img2/ShopIn-icon.JPG" type="image/x-icon">
+</head>
+<body>
+  <!-- Bootstrap Navigation part -->
+    <nav class="navbar navbar-expand-lg bg-dark p-2">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./ShopIn-main.html"><span>Shop.in</span></a>
+        
+        <div style="width: 100%; text-align: center;" class="collapse navbar-collapse bg-dark" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 150px;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" role="button" onclick="backToHome()" href="#/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" role="button" onclick="displayItems(1)" href="#/appliances">Appliances</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" role="button" onclick="displayItems(2)" href="#/mobiles">Mobiles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" role="button" onclick="displayItems(3)" href="#/electronics">Electronics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" role="button" onclick="displayItems(4)" href="#/foods">Foods</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Clothes
+              </a>
+              <ul id="clothes-container" class="dropdown-menu text-center">
+                <li><a class="dropdown-item" role="button" onclick="displayItems(5)" href="#/clothes/mens">Mens</a></li>
+                <li><a class="dropdown-item" role="button" onclick="displayItems(6)" href="#/clothes/womens">Womens</a></li>
+                <li><a class="dropdown-item" role="button" onclick="displayItems(7)" href="#/clothes/kids">Kids</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <form  id="form" class="d-flex" role="search">
+          <input id="search" class="form-control me-2" type="search"  placeholder=" Search" aria-label="Search">
+          <i id="icon" class="fa-solid fa-magnifying-glass"></i>
+        </form>
+
+        <button type="button" class="cart-btn">
+          <!-- <i class="fa-solid fa-cart-shopping cart-icon"></i> -->
+           <img src="./Img2/cart-icon.png" class="cart-icon" alt="">
+          <span id="cart-item-btn-count">0</span>
+        </button>
+
+        <div class="cart-empty-review">
+          <span> Your cart is empty</span>
+          <button class="close-cart-popup"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <button class="navbar-toggler bg-dark" onclick="HandleXBars(this)" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <!-- <i class="fa-sharp fa-solid fa-bars fa-flip-both display-6 text-light"></i> -->
+           <div class="three-bars-container" onclick="HandleXBars(this)">
+            <div class="bar-1"></div>
+            <div class="bar-2"></div>
+            <div class="bar-3"></div>
+           </div>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Bootstrap Courasel part -->
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div onclick="displayItems(1)" class="carousel-item active">  <!--friedge-->
+          <img src="./Img2/home-app-1.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(1)" class="carousel-item">  <!--sofa-->
+          <img src="./Img2/home-app-2.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(1)" class="carousel-item">  <!--Mixie-->
+          <img src="./Img2/home-app-3.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(4)" class="carousel-item">   <!--clothes-->
+          <img src="./Img2/mobiles-banner.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(2)" class="carousel-item">    <!--Asus-->
+          <img src="./Img2/electronics-1.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(3)" class="carousel-item">    <!--Asus-->
+          <img src="./Img2/electronics-2.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(3)" class="carousel-item">  <!--laptop-->
+          <img src="./Img2/electronics-3.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(5)" class="carousel-item">  <!--laptop-->
+          <img src="./Img2/mens-1.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(5)" class="carousel-item">    <!--watchs-->
+          <img src="./Img2/mens-2.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(6)" class="carousel-item">    <!--watchs-->
+          <img src="./Img2/womens-1.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(6)" class="carousel-item">  <!--clothes-->
+          <img src="./Img2/womens-2.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(7)" class="carousel-item">   <!--clothes-->
+          <img src="./Img2/kids.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div onclick="displayItems(4)" class="carousel-item">   <!--clothes-->
+          <img src="./Img2/foods.jpeg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button id="btn-prev" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button id="btn-nxt" class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+      <!-- Displaying my Output here -->
+      <div id="home-block" class="container">
+        <div class="row" id="main-block">        <!--main-block--> 
+          <!-- Card 1 -->
+          <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card shadow-sm" style="width: 100%;">
+              <img src="./img/apple-14.jpeg" class="card-img-top rounded" alt="Product Image">
+              <div class="card-body mb-2">
+                <h5 class="card-title text-dark">Apple Iphone 15 pro Max 256Gb</h5>
+                <p class="card-text display-6">&#8377;80,999</p>
+                <button role="button" class="btn bg-dark text-light">Add to Cart</button>
+                <span id="greeting" class="msg"><i class="fa-solid fa-circle-check"></i> Cart added!</span>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <!--Making an Form to get User Data when Add to cart btn Clicked-->
+      <div class="login-overlay"></div>
+
+      <form class="user-form">
+        <i id="form-close-icon" class="fa-solid fa-xmark"></i>
+        <h2>Welcome to <span id="span">Shop.in</span></h2>
+        <p>Sign in for further Actions</p>
+  
+        <div class="user-detail-input">
+          <div>
+            <input type="text" placeholder="Enter your name" id="userName">
+            <span class="invalid-input-name"></span>
+          </div>
+  
+          <div>
+            <input type="email" placeholder="Enter your mail" id="userMail">
+            <span class="invalid-input-mail"></span>
+          </div>
+  
+          <div>
+            <input type="number" placeholder="Enter your number" id="userNum">
+            <span class="invalid-input-num"></span>
+          </div>
+  
+          <button>Continue</button>
+        </div>
+      </form>
+
+        <!--Overlay div to make the add to cart!-->
+
+      <div id="main-container" class="row justify-content-center">
+  <!-- <h1 id="cookie-h1" class="col-12 text-center mb-4 h"><span id="cookie-name"></span></h1>
+        <div class="cart-container">
+          <p id="para-name">Product Name: <span id="product-name">Apple Iphone 15 Pro Max</span></p>
+          <label id="quantity">Quantity: <button id="minus-btn" onclick="subQuantity()">-</button> <span id="items">0</span> <button id="plus-btn" onclick="plusQuantity()">+</button></label>
+          <p id="para-price">Price: <span id="price">&#8377;1,30,999</span></p>
+          <button id="delBtn">Delete</button>
+        </div>
+
+        <div id="last-btns">
+          <button id="del-all">Clear All</button>
+          <button id="check">Check-Out</button>
+        </div> -->
+      </div>
+
+        <!--For Checkout-Layout!-->
+      <div class="check-out-overlay"></div>
+      <section class="myCart">
+        <h2><i id="go-back" onclick="goBack()" class="fa-solid fa-arrow-left"></i> My Cart</h2>
+    
+        <div class="cart-grid">
+    
+           <div class="flex-product">
+              <!-- <div class="list-of-products">
+                <div class="product-img">
+                  <img src="./img/apple-14.jpeg" alt="">
+                </div>
+        
+                <div class="product-details">
+                  <p class="product-name">Apple iPhone 15 Pro 5G, 128 GB ROM</p>
+                  <p class="product-price">&#8377;130999</p>
+                  <p class="product-quantity">
+                    <label id="qty">Qty: <button class="decrease-btn" onclick="subBtn()">-</button> <span id="counts">1</span> <button class="increase-btn" onclick="plusBtn()">+</button></label>
+                  </p>
+                  <p class="delivery"><i class="fa-solid fa-truck-fast"></i> Standard Delivery Available • Pay and Pick Available</p><hr>
+                  <div class="remove-this">
+                    <button>Remove</button>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+      
+      
+           <div class="check-out-bill">
+              <!-- <h2>ORDER SUMMARY</h2><hr>
+              <p class="total-amount">Total MRP <span class="total-price">&#8377;130999</span></p>
+              <p class="tax">Tax <span>&#8377;0</span></p>
+              <p class="shipping-charges">Shipping Charges <span class="shippings">&#8377;100</span></p><hr>
+              <p class="final-amnt">Total Amount Payable <span class="amount-payable">&#8377;130999</span></p>
+              <button class="proceed-to-pay-btn">PROCEED TO PAY</button> -->
+           </div>
+
+        </div>
+
+        <div class="empty-bag">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <p>Your Cart is empty! Let's fill it up shall we?</p>
+          <button onclick="continueShopping()">Continue Shopping</button>
+        </div>
+        
+      </section>
+
+      <!---Section for making global view of our website!-->
+      <section class="global-view">
+        <section class="global-view-product-section">
+
+          <div onclick="goToTopEvent()" class="product-showcase">
+            <a href="#/home">
+              <img class="demo-cover-img" src="./Img2/sale-img.jpeg" alt="">
+            </a>
+            <span class="prefix-name">Live Offer</span>
+          </div>
+
+          <div onclick="displayComItems(1,3)" class="product-showcase">
+            <a href="#/appliances">
+              <img class="demo-cover-img" src="./Img2/home-2.jpeg" alt="">
+            </a>
+            <span class="prefix-name">home & electronics</span>
+          </div>
+
+          <div onclick="displayItems(2)" class="product-showcase">
+            <a href="#/mobiles">
+              <img class="demo-cover-img" src="./Img2/mob-1.jpeg" alt="">
+            </a>
+            <span class="prefix-name">mobiles</span>
+          </div>
+
+          <div onclick="displayComItems(2, 3)" class="product-showcase">
+            <a href="#/mobiles&accessories">
+              <img class="demo-cover-img" src="./Img2/mob-2.jpeg" alt="">
+            </a>
+            <span class="prefix-name">mobiles & accessories</span>
+          </div>
+
+          <div onclick="displayItems(7)" class="product-showcase">
+            <a href="#/clothes/kids">
+              <img class="demo-cover-img" src="./Img2/boy-girl.jpeg" alt="">
+            </a>
+            <span class="prefix-name">Kids Spl.</span>
+          </div>
+
+          <div onclick="displayComItems(5, 6)"class="product-showcase">
+            <a href="#/clothes/couples">
+              <img class="demo-cover-img" src="./Img2/couples-gif.jpeg" alt="">
+            </a>
+            <span class="prefix-name">Couples Spl.</span>
+          </div>
+
+          <div onclick="displayItems(6)" class="product-showcase">
+            <a href="#/clothes/womens">
+              <img class="demo-cover-img" src="./Img2/ladies.jpeg" alt="">
+            </a>
+            <span class="prefix-name">womens</span>
+          </div>
+
+          <div onclick="displayItems(5)" class="product-showcase">
+            <a href="#/clothes/mens">
+              <img class="demo-cover-img" src="./Img2/male.jpeg" alt="">
+            </a>
+            <span class="prefix-name">mens</span>
+          </div>
+
+          <div onclick="displayItems(3)" class="product-showcase">
+            <a href="#/electronics">
+              <img class="demo-cover-img" src="./Img2/gadgets.jpeg" alt="">
+            </a>
+            <span class="prefix-name">gadgets</span>
+          </div>
+
+          <div onclick="displayItems(3)" class="product-showcase">
+            <a href="#/electronics">
+              <img class="demo-cover-img" src="./Img2/gadgets-2.jpeg" alt="">
+            </a>
+            <span class="prefix-name">powerbanks</span>
+          </div>
+        </section>
+
+        <section class="home-appliance-collapse-div">
+          <div class="offer-title-block">
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+            Best Brands for Appliances
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+          </div>
+
+          <div class="home-appliances-grid-img-show">
+            <div class="image-grid-flex">
+              <div>
+                <div onclick="displayItems(1)">
+                  <img src="./Img2/oven-new.jpeg" alt="">
+                </div>
+                <div onclick="displayItems(1)">
+                  <img src="./Img2/fan-new.jpeg" alt="">
+                </div>
+              </div>
+
+              <div>
+                <div onclick="displayItems(1)">
+                  <img src="./Img2/mixi-new.jpeg" alt="">
+                </div>
+                <div onclick="displayItems(1)">
+                  <img src="./Img2/freezer-new.jpeg" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mobile-showcase-section">
+          <div class="offer-title-block">
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+            Most Popular Smartphones
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+          </div>
+
+          <div class="grid-layout-smartphones">
+            <div onclick="displayItems(2)">
+              <img src="./Img2/mob-demo1.jpeg" alt="">
+            </div>
+            <div onclick="displayItems(2)">
+              <img src="./Img2/mob-demo2.jpeg" alt="">
+            </div>
+          </div>
+          <div class="flex-layout-smartpones">
+            <div onclick="displayItems(2)">
+              <img src="./Img2/mob-demo3.jpeg" alt="">
+            </div>
+            <div onclick="displayItems(2)">
+              <img src="./Img2/mob-demo4.jpeg" alt="">
+            </div>
+            <div onclick="displayItems(2)">
+              <img src="./Img2/mob-demo5.jpeg" alt="">
+            </div>
+            <div onclick="displayItems(2)">
+              <img src="./Img2/mob-demo6.jpeg" alt="">
+            </div>
+          </div>
+        </section>
+
+        <section class="clothing-block-showcase">
+          <div class="offer-title-block">
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+              Fashion & Trendy Collections
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+          </div>
+
+          <div class="four-grid-layout-form">
+            <div class="grid-layout-1">
+              <div class="flex-image-and-para-block">
+                <span class="image-area">
+                  <img src="./Img2/Clothes-homepage-1.jpeg" alt="">
+                </span>
+                <div class="title-msg">
+                  <span class="title-span">Lace Love</span>
+                  <span class="content-span">Elegant lace styles for timeless feminine charm</span>
+                  <span role="button" onclick="displayItems(6)" class="redirect-link-span"><a style="text-decoration: none; color: #555;" href="#/clothes/womens">SHOP NOW</a></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid-layout-2">
+              <div class="flex-image-and-para-block">
+                <span class="image-area">
+                  <img src="./Img2/Clothes-homepage-2.jpeg" alt="">
+                </span>
+                <div class="title-msg">
+                  <span class="title-span">Fusion Tracks</span>
+                  <span class="content-span">Versatile track pants for effortless sporty vibes</span>
+                  <span role="button" onclick="displayItems(5)" class="redirect-link-span"><a style="text-decoration: none; color: #555;" href="#/clothes/mens">SHOP NOW</a></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-layout-3">
+              <div class="flex-image-and-para-block">
+                <span class="image-area">
+                  <img src="./Img2/Clothes-homepage-3.jpeg" alt="">
+                </span>
+                <div class="title-msg">
+                  <span class="title-span">Kids Round-Neck Wear</span>
+                  <span class="content-span">Let's have fun to choose</span>
+                  <span role="button" onclick="displayItems(7)" class="redirect-link-span"><a style="text-decoration: none; color: #555;" href="#/clothes/kids">SHOP NOW</a></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-layout-4">
+              <div class="flex-image-and-para-block">
+                <span class="image-area">
+                  <img src="./Img2/Clothes-homepage-4.jpeg" alt="">
+                </span>
+                <div class="title-msg">
+                  <span class="title-span">Mens Classic Shirts</span>
+                  <span class="content-span">Standard patterned for stylish men</span>
+                  <span role="button" onclick="displayItems(5)" class="redirect-link-span"><a style="text-decoration: none; color: #555;" href="#/clothes/mens">SHOP NOW</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="electronics-block-showcase">
+          <div class="offer-title-block">
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+              Best Deals for all types of Electronics
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+          </div>
+
+          <section class="best-offer-electronics">
+            <h1>Deals on mobiles and accessories from Best Brands...
+              <a onclick="displayComItems(2,3)" class="see-more-link-span" href="#/mobiles&accessories">Explore more</a>
+            </h1>
+
+            <div class="all-electronics-flex">
+              <li class="product-1">
+                <p>40% Off | Bestselling headphones</p>
+                <img src="./Img2/electronics-home-1.jpg" alt="">
+                <a href="#/electronics" class="see-more-link-span" role="button" onclick="displayItems(3)">See all offers</a>
+              </li>
+
+              <li class="product-2">
+                <p>45% Off | Bestselling Mobiles</p>
+                <img src="./Img2/electronics-home-3.jpg" alt="">
+                <a href="#/electronics" class="see-more-link-span" role="button" onclick="displayItems(3)">See all offers</a>
+              </li>
+
+              <li class="product-3">
+                <p>Top Raked | Bestselling Laptops & Mobiles</p>
+                <img src="./Img2/electronics-home-2.jpg" alt="">
+                <a href="#/electronics/mobiles&accessories" class="see-more-link-span" role="button" onclick="displayComItems(3, 2)">See all offers</a>
+              </li>
+
+              <li class="product-4">
+                <p>Most-Loved Deals | Home-desktops </p>
+                <img src="./Img2/electronics-home-5.jpg" alt="">
+                <a href="#/electronics" class="see-more-link-span" role="button" onclick="displayItems(3)">See all offers</a>
+              </li>
+            </div>
+          </section>
+        </section>
+
+        <section class="foods-block-showcase">
+          <div class="offer-title-block">
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+            Order our best food options
+            <i class="fa-solid fa-bolt" style="color: #ffcb0f;"></i>
+          </div>
+
+          <div class="container mt-5 my-food-review">
+            <div class="carousel-container food-section-carousel">
+              <ul class="product-list list-unstyled d-flex">  <!--Make this <ul> to flex so that its items(<li>) where we can modify it to not resize when minimizing the screen-->
+                <!--Food list-1-->
+                <li class="product-item" onclick="displayItems(4)">
+                  <div class="card">
+                    <img class="card-img-top" src="./Img2/Mexican-burger.jpg" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">Mexican Chicken Burger</h5>
+                      <p class="card-text small mt-0 mb-1">
+                        <img class="food-varient-icon" src="./Img2/Non-veg-icon.jpg" alt="">
+                        <span class="small pt-5">Non veg</span>
+                      </p>
+                      <p class="card-text price-list mb-2">₹358</p>
+                      <p class="card-text small about-text">Best-seller combo of classic chicken tandoori zinger</p>
+                      <div class="rating">★★★★☆</div>
+                    </div>
+                  </div>
+                </li>
+                <li class="product-item" onclick="displayItems(4)">
+                  <div class="card">
+                    <img class="card-img-top" src="./Img2/Blazing-pizza.jpg" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">Blazing Chicken Pizza</h5>
+                      <p class="card-text small mt-0 mb-1">
+                        <img class="food-varient-icon" src="./Img2/Non-veg-icon.jpg" alt="">
+                        <span class="small pt-5">Non veg</span>
+                      </p>
+                      <p class="card-text price-list mb-2">₹344</p>
+                      <p class="card-text small about-text">Molten Cheese indulgence with combination of chicken keema.</p>
+                      <div class="rating">★★★★☆</div>
+                    </div>
+                  </div>
+                </li>
+                <li class="product-item" onclick="displayItems(4)">
+                  <div class="card">
+                    <img class="card-img-top" src="./img/briyani.jpeg" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">Fried Chicken Briyani</h5>
+                      <p class="card-text small mt-0 mb-1">
+                        <img class="food-varient-icon" src="./Img2/Non-veg-icon.jpg" alt="">
+                        <span class="small pt-5">Non veg</span>
+                      </p>
+                      <p class="card-text price-list mb-2">₹300</p>
+                      <p class="card-text small about-text">Tasty and spicy Chicken Briyani with Chicken fry.</p>
+                      <div class="rating">★★★★★</div>
+                    </div>
+                  </div>
+                </li>
+                <li class="product-item" onclick="displayItems(4)">
+                  <div class="card">
+                    <img class="card-img-top" src="./img/dosa.jpeg" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">Indian Spl. Dosa's</h5>
+                      <p class="card-text small mt-0 mb-1">
+                        <img class="food-varient-icon" src="./Img2/Veg-icon.jpg" alt="">
+                        <span class="small pt-5">Veg</span>
+                      </p>
+                      <p class="card-text price-list mb-2">₹153</p>
+                      <p class="card-text small about-text">Tasty and Crispy South-Indian favourite reciepe Dosa</p>
+                      <div class="rating">★★★★☆</div>
+                    </div>
+                  </div>
+                </li>
+                <li class="product-item" onclick="displayItems(4)">
+                  <div class="card">
+                    <img class="card-img-top" src="./img/full-meals.jpeg" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">Indian Full Meals</h5>
+                      <p class="card-text small mt-0 mb-1">
+                        <img class="food-varient-icon" src="./Img2/Veg-icon.jpg" alt="">
+                        <span class="small pt-5">Veg</span>
+                      </p>
+                      <p class="card-text price-list mb-2">₹215</p>
+                      <p class="card-text small about-text">South-Indian Meals with 8 varieties of Spl. items.</p>
+                      <div class="rating">★★★★☆</div>
+                    </div>
+                  </div>
+                </li>
+                <li class="product-item" onclick="displayItems(4)">
+                  <div class="card">
+                    <img class="card-img-top" src="./img/barbeque.jpeg" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">Pepper Barbeque Chicken</h5>
+                      <p class="card-text small mt-0 mb-1">
+                        <img class="food-varient-icon" src="./Img2/Non-veg-icon.jpg" alt="">
+                        <span class="small pt-5">Non veg</span>
+                      </p>
+                      <p class="card-text price-list mb-2">₹449</p>
+                      <p class="card-text small about-text">The wonderful lemon pepper marinate is left on the pepper chicken for the entire night.</p>
+                      <div class="rating">★★★★★</div>
+                    </div>
+                  </div>
+                </li>
+                <div class="product-item product-item-see-all" onclick="displayItems(4)">
+                  <i id="see-all-icon" class="fa-solid fa-circle-right"></i>
+                  <p>See all</p>
+                </div>
+              </ul>
+            </div>
+
+            <!--Carousel buttons-->
+            <button class="carousel-control-prev" type="button" onclick="moveCarousel('back')">
+              <span class="carousel-control-prev-icon" aria-hidden="true">
+                <i class="fa-solid fa-backward" style="color: grey; font-size: 35px;"></i>
+              </span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" onclick="moveCarousel('front')">
+              <span class="carousel-control-next-icon" aria-hidden="true">
+                <i class="fa-solid fa-forward" style="color: grey; font-size: 35px;"></i>
+              </span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </section>
+
+      </section>
+
+      <!--Footer-section-->
+      <footer class="footer-section-all-page">
+        <h2 class="footer-title-text">
+          <span class="unique-text">Our Unique</span>
+          <span class="offering-text">Offerings</span>
+        </h2>
+
+        <div class="grid-column-unique-offer-block">
+          <div class="grid-show-offer-block-1">
+            <img src="./Img2/unique-offer-1.jpg" alt="">
+            <p class="offer-text">Free Alterations</p>
+          </div>
+          <div class="grid-show-offer-block-1">
+            <img src="./Img2/unique-offer-2.jpg" alt="">
+            <p class="offer-text">Easy Exchange & Return</p>
+          </div>
+          <div class="grid-show-offer-block-1">
+            <img src="./Img2/unique-offer-3.jpg" alt="">
+            <p class="offer-text">Express Delivery</p>
+          </div>
+          <div class="grid-show-offer-block-1">
+            <img src="./Img2/unique-offer-4.jpg" alt="">
+            <p class="offer-text">Personalized Engraving</p>
+          </div>
+          <div class="grid-show-offer-block-1">
+            <img src="./Img2/unique-offer-5.jpg" alt="">
+            <p class="offer-text">Curated Styling Advance</p>
+          </div>
+          <div class="grid-show-offer-block-1">
+            <img src="./Img2/unique-offer-6.jpg" alt="">
+            <p class="offer-text">Click & Collect</p>
+          </div>
+        </div> 
+        
+        <div class="secure-payment-mail-section">
+          <div class="secure-payment-port-combination">
+            <div class="secure-payment-port">
+              <p style="line-height: 4em; margin-top: -15px;" class="card-title">Pay securely by</p>
+              <p class="card-img">
+                <img src="./Img2/card-1jpg.webp" alt="">
+                <img src="./Img2/card-2jpg.webp" alt="">
+                <img src="./Img2/card-3jpg.webp" alt="">
+                <img src="./Img2/card-4jpg.webp" alt="">
+              </p>
+            </div>
+  
+            <div class="secure-payment-port">
+              <p class="card-title">Verified by</p>
+              <p class="card-img">
+                <img src="./Img2/card-5jpg.webp" alt="">
+                <img src="./Img2/card-6jpg.webp" alt="">
+                <img src="./Img2/card-7jpg.webp" alt="">
+                <img src="./Img2/card-8jpg.webp" alt="">
+              </p>
+            </div>
+          </div>
+
+          <div class="mail-subscription">
+            <h4>Subscribe to our awesome emails.</h4>
+            <p>Get our latest offers and news straight in your inbox.</p>
+
+            <div class="mail-input-button">
+              <input tabindex="1" type="email" placeholder="Please enter your email address" name="" id="email-box-last">
+              <button id="email-subs-btn" onclick="proceedSubs()">Subscribe</button>
+            </div>
+            <p class="email-validation-quotation"></p>
+          </div>
+        </div>
+
+        <div class="shopIn-about-detail-note">
+          <div class="shopIn-detial-text about-text">
+            <h2>Shop.in - Best Fashion Shopping Site in India</h2>
+            <p>
+              Shop.in is one of India’s largest departmental stores. It offers one of the country’s widest ranges in the latest Smart phones, <a onclick="displayItems(3)" href="#/electronics">Laptops</a>, accessories, beauty, home decor, fragrances, accessories and your favourite <a onclick="displayItems(4)" href="#/foods">foods</a> at the best prices. 
+              Today Shop.in is an easy way to shop for all your fashion and lifestyle needs online from the comfort of your home. 
+              Log in to bag the best deals, get exclusive offers and enjoy your ‘Shop Anytime Anywhere’ time with free shipping, cash on delivery and the great customer service that Shop.in is known for.
+            </p>
+            <p>
+              Shop.in is a one stop destination for your family's to bring luxury <a onclick="displayItems(1)" href="#/appliances">home appliances</a>, All types of <a onclick="displayItems(2)" href="#/mobiles">mobiles</a>, laptops and gadgets also wide range of fashion needs be it <a onclick="displayItems(5)" href="#/clothes/mens">men’s clothing</a>, <a onclick="displayItems(6)" href="#/clothes/womens">women’s clothing</a>, fashion footwear and <a onclick="displayItems(7)" href="#/clothes/kids">kid’s clothing</a> to name a few of the top categories to check out. 
+              Here are some of the best brands and products across all categories at your fingertips.:
+            </p>
+          </div>
+
+          <div class="shopIn-detial-text home-appliance-text">
+            <h2>Luxury Home Appliances</h2>
+            <p>
+              Make your space more efficient and comfortable with our range of smart <a onclick="displayItems(1)" href="#/appliances">home appliances</a>. 
+              From Refrigerators, ACs, to Washing machines, <strong>Shop.in</strong> has everything you need to make your space more efficient and comfortable.
+              Major appliances, often called white goods, include items like refrigerators and washing machines, while small appliances encompass items such as toasters and coffee makers. <br/>
+            </p>
+            <p>
+              Small appliances are typically small household electrical machines, also very useful and easily carried and installed. Yet another category is used in the kitchen, including: juicers, electric mixers, meat grinders, coffee grinders, deep fryers, herb grinders, food processors, electric kettles, waffle irons, coffee makers, blenders, rice cookers, toasters and exhaust hoods.
+            </p>
+          </div>
+
+          <div class="shopIn-detial-text mobiles-text">
+            <h2>Latest Mobile Collections</h2>
+            <p>
+              Stay connected and ahead of the curve with the latest mobiles from top brands. At Shop.in, you'll find the coolest <a onclick="displayItems(2)" href="#/mobiles">smartphones</a> with exclusive offers and recommendations to help you stay connected in style.Looking for a Xiaomi <a onclick="displayItems(2)" href="#/mobiles">mobile phone</a>? Here are Xiaomi&Redmi series for you to choose,and you can compare price and buy a very cost-effective smartphones in a wide range of brands like Vivo, Apple, Samsung and Realme, Redmi and more...
+            </p>
+            <p>
+              Capture and share your adventures with high-quality cameras and accessories. From epic travel photos to Instagram-worthy selfies, Shop.in offers a wide range of DSLR cameras, Action cameras and accessories to help you capture and share your favourite moments with ease.
+            </p>
+          </div>
+
+          <div class="shopIn-detial-text electronics-text">
+            <h2>All New Electronics and Gadgets</h2>
+            <p>
+              Power up your productivity and gaming experience with cutting-edge <a onclick="displayItems(3)" href="#/electronics">laptops</a> for work and play. Whether you're a student, freelancer, or avid gamer, Shop.in offers a wide range of laptops at competitive prices to suit your needs and budget.
+              Enjoy music at home or on-the-go with our <a onclick="displayItems(3)" href="#/electronics">Headphones</a>. Create your own music with musical keyboards, Guitars and more.  Discover your music with <a onclick="displayItems(3)" href="#/electronics">Bluetooth speakers</a> products at Shop.in across top Brands and offers that suit your taste and budget.
+            </p>
+            <p>
+              Power up your productivity and gaming experience with cutting-edge <a onclick="displayItems(3)" href="#/electronics">Pendrive</a> for work and play. Shop.in offers a wide range of laptops at competitive prices to suit your needs and budget.
+              Enjoy music at home or on-the-go with our <a onclick="displayItems(3)" href="#/electronics">Airpods</a>. Create your own music with musical keyboards, Guitars and more.  Discover your music with <a onclick="displayItems(3)" href="#/electronics">Power Banks</a> products at Shop.in across top Brands and offers that suit your taste and budget.
+            </p>
+          </div>
+
+          <div class="shopIn-detial-text mens-clothing-text">
+            <h2>Men’s Clothing and Accessories</h2>
+            <p>
+              Give your wardrobe a makeover with <a onclick="displayItems(5)" href="#/clothes/mens"> men’s</a> apparel and accessories from Shop.in that’ll take you from the boardroom to the beach. Brands that you should definitely check out are Bandeya for men’s Indianwear like kurtas and pyjamas, and Stop that retails smart men’s clothing like formal shirts and trousers. Check out Alt Life for cool casuals like printed t-shirts and jeans that will keep you looking confident and feeling comfortable.
+            </p>
+            <p>
+              Whether it’s polos, <a onclick="displayItems(5)" href="#/clothes/mens">casual jackets</a> or even men’s sports and <a onclick="displayItems(5)" href="#/clothes/mens">activewear</a>, you’ll find something for you that’s versatile and reliable to create your fit for the day. Wallets, belts, <a onclick="displayItems(5)" href="#/clothes/mens">watches</a> and <a onclick="displayItems(5)" href="#/clothes/mens">laptop bags</a> are everyday practical pieces that will complete your look.
+            </p>
+          </div>
+
+          <div class="shopIn-detial-text womens-clothing-text">
+            <h2>Trendy Women’s Clothing and Accessories</h2>
+            <p>
+              Choose Shop.in.com as your destination for online shopping for <a onclick="displayItems(6)" href="#/clothes/womens">women</a> that offers the latest fashion picks from the <a onclick="displayItems(6)" href="#/clothes/womens">best brands</a>. Find everything in one place from women’s ethnic wear like <a onclick="displayItems(6)" href="#/clothes/womens">kurtis</a> from W and Biba to salwar and churidar sets from exclusive brands like Haute Curry and Fratini. Celebrate in festive wear by Kashish with gorgeous sparkly <a onclick="displayItems(6)" href="#/clothes/womens">lehenga</a> cholis, patiala suits and sharara sets.
+            </p>
+            <p>
+              Date night will always be fun with flirty and feminine dresses and jumpsuits. Find tops and tees in all your favourite styles like peplum tops, shirt style, kaftans, off shoulder tops, camisoles and more to pair with <a onclick="displayItems(6)" href="#/clothes/womens">skirts</a>, palazzos, jeans and jeggings.
+            </p>
+          </div>
+
+          <div class="shopIn-detial-text kids-clothing-text">
+            <h2>Kids’ wear Online For Fun with Fashion</h2>
+            <p>
+              Keep your little ones looking fashionable and having fun with online shopping for <a onclick="displayItems(7)" href="#/clothes/kids">kids</a> clothes in India at Shop.in Trendy designs and high-quality kids’ clothing from casual wear to party attire are at your fingertips. Explore the site for <a onclick="displayItems(7)" href="#/clothes/kids">baby</a> clothes and dress your newborns, toddlers and kids in cute and comfy outfits that’ll make them the most stylish baby on the block.
+            </p>
+            <p>
+              Shop now and give your little ones the best. The wide range of apparels, toys, games and other accessories for your kids from brands like Karrot, Pepe Jeans, Cutecumber,Pippin and more ensures you have an unmatched experience while shopping for your kids.
+            </p>
+          </div>
+
+          <div class="shopIn-detial-text foods-text">
+            <h2>The restaurant platform that’s made to order.</h2>
+            <p>
+              Explore <a onclick="displayItems(4)" href="#/foods">restaurants</a> that deliver near you, or try yummy takeout fare. With a place for every taste, it’s easy to find food you crave, and <a onclick="displayItems(4)" href="#/foods">order</a> online or through the Shop.in app. Find great meals fast with lots of local menus. Enjoy eating the convenient way with places that deliver to your door.
+            </p>
+            <p>
+              Avail exclusive offers, and order specials that are not available on aggregators.
+              Distance is never an issue. Order from your favourite restaurants even if they’re further away than 12KMs.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="customer-category-flex-routes">
+          <div class="about-this-ul-flex">
+            <h2>CUSTOMER</h2>
+            <ul class="footer-nav-product-link">
+              <li><a onclick="backToHome()">HELP/FAQS</a></li>
+              <li><a onclick="backToHome()">OFFERS</a></li>
+              <li><a onclick="backToHome()">STORES NEARBY</a></li>
+              <li><a onclick="backToHome()">CONTACT</a></li>
+            </ul>
+          </div>
+
+          <div class="about-this-ul-flex">
+            <h2>TOP CATEGORIES</h2>
+            <ul class="footer-nav-product-link">
+              <li><a onclick="displayItems(1)" href="#/appliances">APPLIANCES</a></li>
+              <li><a onclick="displayItems(2)" href="#/mobiles">MOBILES</a></li>
+              <li><a onclick="displayItems(3)" href="#/electronics">ELECTRONICS</a></li>
+              <li><a onclick="displayItems(4)" href="#/foods">FOODS</a></li>
+              <li><a onclick="displayItems(5)" href="#/clothes/mens">MENS</a></li>
+              <li><a onclick="displayItems(6)" href="#/clothes/womens">WOMENS</a></li>
+              <li><a onclick="displayItems(7)" href="#/clothes/kids">KIDS</a></li>
+            </ul>
+          </div>
+
+          <div class="about-this-ul-flex">
+            <h2>STORE AND SITES</h2>
+            <ul class="footer-nav-product-link">
+              <li><a>ABOUT US</a></li>
+              <li><a>CONTACT US</a></li>
+              <li><a>CORPORATE SITE</a></li>
+              <li><a>STORE LOCATOR</a></li>
+              <li><a>CAREERS</a></li>
+            </ul>
+          </div>
+
+          <div class="about-this-ul-flex">
+            <h2>POLICIES</h2>
+            <ul class="footer-nav-product-link">
+              <li><a>TERMS OF USE</a></li>
+              <li><a>PRIVACY</a></li>
+              <li><a>DELIVERY POLICY</a></li>
+              <li><a>EXCHANGE & RETURN</a></li>
+            </ul>
+          </div>
+
+          <div class="about-this-ul-flex">
+            <h2>LINKS</h2>
+            <ul class="footer-nav-product-link">
+              <li>
+                <a style="margin-left: 4px; font-size: 17.2px;"><i class="fa-brands fa-facebook"></i></a>
+                <a style="margin-left: 4px; font-size: 17.2px;"><i class="fa-brands fa-instagram"></i></a>
+                <a style="margin-left: 4px; font-size: 17.2px;"><i class="fa-brands fa-youtube"></i></a>
+                <a style="margin-left: 4px; font-size: 17.2px;"><i class="fa-brands fa-square-pinterest"></i></a>
+                <a style="margin-left: 4px; font-size: 17.2px;"><i class="fa-brands fa-x-twitter"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+
+        <div class="shopin-footer-social-links">
+          <div class="shopin-legal-policies">
+            <p>Copyright @ <span id="current-year-shopin"></span> Shop.in &#183; All rights reserved.</p>
+          </div>
+          <div class="social-links-shopin"></div>
+        </div>
+      </footer>
+
+  
+      <section class="go-to-top-link">
+        <button title="Go to top" id="go-to-top-btn" onclick="goToTopEvent()">
+          <i class="fa-solid fa-circle-chevron-up"></i>
+        </button>
+      </section>
+
+       
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./Scripts/ShopIn.js"></script>
+</body>
+</html>
