@@ -77,7 +77,7 @@ The cart also displays a list of items added, their quantities, and the total pr
 - jQuery is responsible for toggling the visibility of modals (for sign-in, cart details) and menus. For example, clicking on the cart icon can trigger the cart modal to appear.
 - Purpose: Adds smooth visual effects to improve the overall user experience, making interactions feel more fluid.
 
-# Dynamic Content Updates: The page content updates without reloading using JavaScript and AJAX.
+## Dynamic Content Updates: The page content updates without reloading using JavaScript and AJAX.
 - **Interactive Elements:** Various interactive elements like product modals, hover effects, and smooth scrolling are handled through JS/jQuery.
 - **Form Validation:** Ensures user input is correct before submission.
 - **Smooth Animations:** Fade, slide, and scroll effects enhance UX.
