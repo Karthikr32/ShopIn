@@ -168,7 +168,7 @@ const finalHTML = localStorage.getItem("finalHTML");
 const checkOutPage = document.querySelector('.check-out-form-bill');
 const emptyCheckoutState = document.querySelector('.if-empty-cart-checkout');
 
-
+window.addEventListener('load', () => {
 if(cartItems.length === 0 || finalHTML === '') {
   checkOutPage.remove(); 
   emptyCheckoutState.style.display = 'block';
@@ -206,6 +206,7 @@ else {
 
   listOfProducts.innerHTML += billHTML;
 }
+});  
 
 function payBtn() {
   const payNowBtn = document.querySelector('.payNowBtn');
